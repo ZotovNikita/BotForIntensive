@@ -1,0 +1,56 @@
+version: '3.1'
+
+intents:
+  - greet
+  - booking
+  - out_of_scope
+
+actions:
+  - action_booking
+
+slots:
+  user_name:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: booking_form
+            requested_slot: user_name
+  time:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: booking_form
+            requested_slot: time
+
+forms:
+  booking_form:
+    required_slots:
+      - user_name
+      - time
+
+responses:
+  utter_greet:
+    - text: 'Приветствую вас!)'
+
+  utter_booking:
+    - text: 'ОК'
+
+  utter_out_of_scope:
+    - text: 'Я тебя не понял :('
+
+  utter_ask_user_name:
+    - text: 'на кого бронируем?'
+
+  utter_ask_time:
+    - text: 'когда???'
+      buttons:
+        - title: '14:00'
+          payload: '14:00'
+        - title: '16:00'
+          payload: '16:00'
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

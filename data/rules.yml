@@ -1,0 +1,33 @@
+version: '3.1'
+
+rules:
+  - rule: Не забывай здороваться)
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Бронь (Запустить форму)
+    steps:
+      - intent: booking
+      - action: booking_form
+      - active_loop: booking_form
+
+  - rule: Завершить форму
+    condition:
+      - active_loop: booking_form
+    steps:
+      - action: booking_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: action_booking
+
+  - rule: Не понял
+    steps:
+      - intent: out_of_scope
+      - action: utter_out_of_scope
+
+  - rule: Фолбек
+    steps:
+      - intent: nlu_fallback
+      - action: utter_out_of_scope

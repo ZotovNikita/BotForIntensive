@@ -2,11 +2,18 @@ version: '3.1'
 
 intents:
   - greet
-  - booking
+  - farewell
+  - registration
+  - information
+  - greet+registration
+  - greet+information
+  - problems
+  - wishes
   - out_of_scope
 
 actions:
-  - action_booking
+  - action_problems
+  - action_wishes
 
 slots:
   user_name:
@@ -14,42 +21,55 @@ slots:
     mappings:
       - type: from_text
         conditions:
-          - active_loop: booking_form
+          - active_loop: problems_form
             requested_slot: user_name
-  time:
+  description:
     type: text
     mappings:
       - type: from_text
         conditions:
-          - active_loop: booking_form
-            requested_slot: time
-
+          - active_loop: problems_form
+            requested_slot: description
+  wish:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: wishes_form
+            requested_slot: wish
 forms:
-  booking_form:
+  problems_form:
     required_slots:
       - user_name
-      - time
+      - description
+  wishes_form:
+    required_slots:
+      - wish
 
 responses:
   utter_greet:
-    - text: 'Приветствую вас!)'
+    - text: 'Приветствую! Будем рады видеть Вас на нашем интенсиве)'
 
-  utter_booking:
-    - text: 'ОК'
+  utter_farewell:
+    - text: 'Всего доброго! Ждем Вас на нашем интенсиве)'
 
   utter_out_of_scope:
     - text: 'Я тебя не понял :('
 
-  utter_ask_user_name:
-    - text: 'на кого бронируем?'
+  utter_registration:
+    - text: 'Для регистрации на интенсив перейдите по ссылке: https://b24-r2nnqi.bitrix24.site/crm_form_auqwc/'
 
-  utter_ask_time:
-    - text: 'когда???'
-      buttons:
-        - title: '14:00'
-          payload: '14:00'
-        - title: '16:00'
-          payload: '16:00'
+  utter_information:
+    - text: 'Узнать полную информацию об интенсиве можно по ссылке: https://pei.omgtu.ru'
+
+  utter_ask_user_name:
+    - text: 'Укажите свое имя, чтобы модератор мог связаться с вами'
+
+  utter_ask_description:
+    - text: 'Опишите свою проблему'
+
+  utter_ask_wish:
+    - text: 'Вы можете оставить свои идеи, пожелания и предложения, для нас это очень важно'
 
 session_config:
   session_expiration_time: 60

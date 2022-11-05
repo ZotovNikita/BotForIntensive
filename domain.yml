@@ -1,65 +1,83 @@
 version: '3.1'
+
 intents:
-- greet
-- farewell
-- registration
-- information
-- greet+registration
-- greet+information
-- problems
-- wishes
-- out_of_scope
+  - greet
+  - farewell
+  - registration
+  - information
+  - greet+registration
+  - greet+information
+  - problems
+  - wishes
+  - case
+  - busy
+  - out_of_scope
+
 actions:
-- action_problems
-- action_wishes
+  - action_problems
+  - action_wishes
+
 slots:
   user_name:
     type: text
     mappings:
-    - type: from_text
-      conditions:
-      - active_loop: problems_form
-        requested_slot: user_name
+      - type: from_text
+        conditions:
+          - active_loop: problems_form
+            requested_slot: user_name
   description:
     type: text
     mappings:
-    - type: from_text
-      conditions:
-      - active_loop: problems_form
-        requested_slot: description
+      - type: from_text
+        conditions:
+          - active_loop: problems_form
+            requested_slot: description
   wish:
     type: text
     mappings:
-    - type: from_text
-      conditions:
-      - active_loop: wishes_form
-        requested_slot: wish
+      - type: from_text
+        conditions:
+          - active_loop: wishes_form
+            requested_slot: wish
 forms:
   problems_form:
     required_slots:
-    - user_name
-    - description
+      - user_name
+      - description
   wishes_form:
     required_slots:
-    - wish
+      - wish
+
 responses:
   utter_greet:
-  - text: Приветствую! Будем рады видеть Вас на нашем интенсиве)
+    - text: 'Приветствую! Будем рады видеть Вас на нашем интенсиве)'
+
   utter_farewell:
-  - text: Всего доброго! Ждем Вас на нашем интенсиве)
+    - text: 'Всего доброго! Ждем Вас на нашем интенсиве)'
+
   utter_out_of_scope:
-  - text: Я тебя не понял :(
+    - text: 'Я тебя не понял :('
+
   utter_registration:
-  - text: 'Для регистрации на интенсив перейдите по ссылке: https://b24-r2nnqi.bitrix24.site/crm_form_auqwc/'
+    - text: 'Для регистрации на интенсив перейдите по ссылке: https://b24-r2nnqi.bitrix24.site/crm_form_auqwc/'
+
   utter_information:
-  - text: 'Узнать полную информацию об интенсиве можно по ссылке: https://pei.omgtu.ru'
+    - text: 'Узнать полную информацию об интенсиве можно по ссылке: https://pei.omgtu.ru'
+
   utter_ask_user_name:
-  - text: Укажите свое имя, чтобы модератор мог связаться с вами
+    - text: 'Укажите свое имя, чтобы модератор мог связаться с вами'
+
   utter_ask_description:
-  - text: Опишите свою проблему
+    - text: 'Опишите свою проблему'
+
   utter_ask_wish:
-  - text: Вы можете оставить свои идеи, пожелания и предложения, для нас это очень
-      важно
+    - text: 'Вы можете оставить свои идеи, пожелания и предложения, для нас это очень важно'
+  
+  utter_case:
+    - text: 'Ознакомиться с доступными кейсами вы можете на сайте https://pei.omgtu.ru в разделе "СПИСОК И ОПИСАНИЕ КЕЙСОВ"'
+  
+  utter_busy:
+    - text: 'Вы можете подробней ознакомиться с расписанием мероприятий на сайте https://pei.omgtu.ru в разделе "МЕРОПРИЯТИЯ ИНТЕНСИВА". Мы предлагаем на выбор несколько мероприятий, хотя бы одно из них обязательно в вечернее время, возможно, это вам подходит)'
 
 session_config:
   session_expiration_time: 60

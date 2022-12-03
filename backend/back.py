@@ -91,21 +91,11 @@ def delite_intent(name):
     with open('../data/rules.yml', 'w', encoding='utf-8') as f:
         f.write(yaml.dump(r, sort_keys=False, allow_unicode=True))
 
-
-@app.put("/update_intent")
-def update_intent(name):
-    with open("../domain.yml", encoding='utf-8') as dom:
-            d = yaml.load(dom, Loader=yaml.Loader)
-            d['intents'].delete(data['intent_name'])
-            d['responses'].delete(['utter_' + data['intent_name']])
-            dom.close()                   
-
-
-@app.get("/get_intent/{name}", response_model=QuestionModel)
+@app.get("/get_intent/{intent.name}", response_model=QuestionModel)
 async def get_intent(intent: QuestionModel):
     return intent[intent.name].json()
     
-@app.put("/update_intent/{name}", response_model=QuestionModel)
+@app.put("/update_intent/{intent.name}", response_model=QuestionModel)
 async def update_intent(intent: QuestionModel):
     update_name_encoded = jsonable_encoder(intent.name)
     intent[intent.name] = update_name_encoded

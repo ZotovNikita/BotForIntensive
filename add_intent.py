@@ -1,5 +1,4 @@
 import yaml
-
 with open("data.yml", encoding='utf-8') as f:
     data = yaml.load(f, Loader=yaml.Loader)
     f.close()

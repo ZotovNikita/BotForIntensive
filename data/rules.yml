@@ -1,91 +1,50 @@
 version: '3.1'
-
 rules:
-  - rule: Не забывай здороваться)
+- rule: greet
+  steps:
+  - intent: greet
+  - action: utter_greet
+- rule: farewell
+  steps:
+  - intent: farewell
+  - action: utter_farewell
+- rule: out_of_scope
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+- rule: registration
+  steps:
+  - intent: registration
+  - action: utter_registration
+- rule: information
+  steps:
+  - intent: information
+  - action: utter_information
+- rule: greet+registration
+  steps:
+  - intent: greet+registration
+  - action: utter_greet+registration
+- rule: greet+information
+  steps:
+  - intent: greet+information
+  - action: utter_greet+information
+- rule: busy
+  steps:
+  - intent: busy
+  - action: utter_busy
+- rule: nlu_fallback
+  steps:
+  - intent: nlu_fallback
+  - action: utter_out_of_scope
+  - rule: start
     steps:
-      - intent: greet
-      - action: utter_greet
-
-  - rule: Пока-пока
-    steps:
-      - intent: farewell
-      - action: utter_farewell
-
-  - rule: Запустить форму problems_form
-    steps:
-      - intent: problems
-      - action: problems_form
-      - active_loop: problems_form
-
-  - rule: Завершить форму problems_form
-    condition:
-      - active_loop: problems_form
-    steps:
-      - action: problems_form
-      - active_loop: null
-      - slot_was_set:
-          - requested_slot: null
-      - action: action_problems
-
-  - rule: Запустить форму wishes_form
-    steps:
-      - intent: wishes
-      - action: wishes_form
-      - active_loop: wishes_form
-
-  - rule: Завершить форму wishes_form
-    condition:
-      - active_loop: wishes_form
-    steps:
-      - action: wishes_form
-      - active_loop: null
-      - slot_was_set:
-          - requested_slot: null
-      - action: action_wishes
-
-  - rule: Не понял
-    steps:
-      - intent: out_of_scope
-      - action: utter_out_of_scope
-
-  - rule: Регистрация
-    steps:
-      - intent: registration
-      - action: utter_registration
-
-  - rule: Информация
-    steps:
-      - intent: information
-      - action: utter_information
-
-  - rule: Приветствие+регистрация
-    steps:
-      - intent: greet+registration
-      - action: utter_greet
-      - action: utter_registration
-
-  - rule: Приветствие+информация
-    steps:
-      - intent: greet+information
-      - action: utter_greet
-      - action: utter_information
-
-  - rule: Выбери кейс
-    steps:
-      - intent: case
-      - action: utter_case
-
-  - rule: Посети мероприятие
-    steps:
-      - intent: busy
-      - action: utter_busy
-
-  - rule: Фолбек
-    steps:
-      - intent: nlu_fallback
-      - action: utter_out_of_scope
-
-  - rule: Welcome
-    steps:
-      - intent: start
-      - action: utter_start
+    - intent: start
+    - action: utter_start
+- rule: start
+  steps:
+  - intent: start
+  - action: utter_start
+- rule: cases
+  steps:
+  - intent: cases
+  - action: utter_cases

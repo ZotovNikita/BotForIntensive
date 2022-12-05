@@ -6,7 +6,7 @@ from starlette.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 import yaml
-import json
+import os
 
 app = FastAPI()
 
@@ -22,13 +22,6 @@ class QuestionModel(BaseModel):
     name: str
     examples: list
     answer: str
-
-class AllQuestionModel(BaseModel):
-    intents: List[QuestionModel]
-
-with open("data.json", encoding='utf-8') as f:
-    data = json.load(f)
-    f.close()
 
 @app.post("/add_intent")
 def add_intent(intent: QuestionModel):
@@ -62,8 +55,8 @@ def add_intent(intent: QuestionModel):
         f.write(yaml.dump(r, sort_keys=False, allow_unicode=True))
 
 
-@app.delete("/delite_intent")
-def delite_intent(name):
+@app.delete("/delete_intent")
+def delete_intent(name):
     with open("../domain.yml", encoding='utf-8') as dom:
         d = yaml.load(dom, Loader=yaml.Loader)
         if name not in d['intents']:
@@ -119,7 +112,7 @@ def update_intent(intent: QuestionModel):
         raise HTTPException(status_code=404, detail="Поле возможных вопросов от пользователя не может быть пустым")
     if len(intent.answer) == 0:
         raise HTTPException(status_code=404, detail="Поле ответа на вопросы не может быть пустым")
-    delite_intent(intent.name)
+    delete_intent(intent.name)
     add_intent(intent)
     
 

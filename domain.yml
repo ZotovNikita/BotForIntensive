@@ -36,7 +36,9 @@ responses:
   utter_greet+registration:
   - text: 'Здравствуй! Для регистрации на интенсив перейди по ссылке: https://b24-r2nnqi.bitrix24.site/crm_form_auqwc/'
   utter_greet+information:
-  - text: 'Здравствуй! Ты можешь узнать полную информацию об интенсиве по ссылке: https://pei.omgtu.ru'
+  - text: 'Здравствуй! Ты можешь узнать полную информацию об интенсиве по ссылке:
+      https://pei.omgtu.ru'
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

@@ -1,12 +1,12 @@
 from http.client import HTTPException
-from typing import List, Union
 from fastapi import FastAPI
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 import yaml
-import os
+from rasa import train
+
 
 app = FastAPI()
 
@@ -116,6 +116,10 @@ def update_intent(intent: QuestionModel):
     add_intent(intent)
     
 
-# @app.get("/train")
-# async def get_intent():
+    
+
+
+@app.get("/train")
+def get_intent():
+    train(domain="../domain.yml", config="../config.yml",  training_files=["../data/nlu.yml", "../data/rules.yml"], output= "../models",  dry_run= False, force_training=  False, finetuning_epoch_fraction = 1.0) 
     

@@ -1,51 +1,43 @@
 version: '3.1'
 rules:
-- rule: greet
+- rule: приветствие
   steps:
-  - intent: greet
-  - action: utter_greet
-- rule: farewell
+  - intent: приветствие
+  - action: utter_приветствие
+- rule: прощание
   steps:
-  - intent: farewell
-  - action: utter_farewell
-- rule: out_of_scope
+  - intent: прощание
+  - action: utter_прощание
+- rule: не_понимаю
   steps:
-  - intent: out_of_scope
-  - action: utter_out_of_scope
-- rule: registration
+  - intent: не_понял
+  - action: utter_не_понял
+- rule: регистрция
   steps:
-  - intent: registration
-  - action: utter_registration
-- rule: information
+  - intent: регистрция
+  - action: utter_регистрция
+- rule: информация
   steps:
-  - intent: information
-  - action: utter_information
-- rule: greet+registration
+  - intent: информация
+  - action: utter_информация
+- rule: приветствие+регистрция
   steps:
-  - intent: greet+registration
-  - action: utter_greet+registration
-- rule: greet+information
+  - intent: приветствие+регистрция
+  - action: utter_приветствие+регистрция
+- rule: приветствие+информация
   steps:
-  - intent: greet+information
-  - action: utter_greet+information
-- rule: busy
+  - intent: приветствие+информация
+  - action: utter_приветствие+информация
+- rule: занят
   steps:
-  - intent: busy
-  - action: utter_busy
-- rule: nlu_fallback
+  - intent: занят
+  - action: utter_занят
+- rule: старт
   steps:
-  - intent: nlu_fallback
-  - action: utter_out_of_scope
-- rule: start
+  - intent: старт
+  - action: utter_старт
+- rule: кейсы
   steps:
-  - intent: start
-  - action: utter_start
-- rule: start
-  steps:
-  - intent: start
-  - action: utter_start
-- rule: cases
-  steps:
-  - intent: cases
-  - action: utter_cases
+  - intent: кейсы
+  - action: utter_кейсы
 

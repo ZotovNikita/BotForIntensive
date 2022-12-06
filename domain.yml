@@ -1,44 +1,42 @@
 version: '3.1'
 intents:
-- greet
-- farewell
-- registration
-- information
-- greet+registration
-- greet+information
-- case
-- busy
-- start
-- out_of_scope
-
+- приветствие
+- прощание
+- регистрция
+- информация
+- приветствие+регистрция
+- приветствие+информация
+- кейсы
+- занят
+- старт
+- не_понял
 responses:
-  utter_greet:
+  utter_приветствие:
   - text: Приветствую! Будем рады видеть тебя на нашем интенсиве)
-  utter_farewell:
+  utter_прощание:
   - text: Всего доброго! Ждем тебя на нашем интенсиве)
-  utter_out_of_scope:
+  utter_не_понял:
   - text: Я тебя не понял :( Не мог бы ты перефразировать запрос?
-  utter_registration:
+  utter_регистрция:
   - text: 'Для регистрации на интенсив перейди по ссылке: https://b24-r2nnqi.bitrix24.site/crm_form_auqwc/'
-  utter_information:
+  utter_информация:
   - text: 'Узнать полную информацию об интенсиве можно по ссылке: https://pei.omgtu.ru'
-  utter_cases:
+  utter_кейсы:
   - text: Ознакомиться с доступными кейсами ты можете на сайте https://pei.omgtu.ru
       в разделе "СПИСОК И ОПИСАНИЕ КЕЙСОВ"
-  utter_busy:
+  utter_занят:
   - text: Ты можешь подробней ознакомиться с расписанием мероприятий на сайте https://pei.omgtu.ru
       в разделе "МЕРОПРИЯТИЯ ИНТЕНСИВА". Мы предлагаем на выбор несколько мероприятий,
       хотя бы одно из них обязательно в вечернее время, возможно, это тебе подходит)
-  utter_start:
+  utter_приветствие+регистрция:
+  - text: 'Здравствуй! Для регистрации на интенсив перейди по ссылке: https://b24-r2nnqi.bitrix24.site/crm_form_auqwc/'
+  utter_приветствие+информация:
+  - text: 'Здравствуй! Ты можешь узнать полную информацию об интенсиве по ссылке:
+      https://pei.omgtu.ru'
+  utter_старт:
   - text: Приветствую тебя, человек!!! Меня зовут Интенсиша, я буду твоим помощником
       на время интенсива. Если у тебя возникли какие-нибудь вопросы, ты можешь задать
       их мне :)
-  utter_greet+registration:
-  - text: 'Здравствуй! Для регистрации на интенсив перейди по ссылке: https://b24-r2nnqi.bitrix24.site/crm_form_auqwc/'
-  utter_greet+information:
-  - text: 'Здравствуй! Ты можешь узнать полную информацию об интенсиве по ссылке:
-      https://pei.omgtu.ru'
-
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

@@ -4,8 +4,8 @@ from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-import yaml
 from rasa import train
+import yaml
 
 
 app = FastAPI()
